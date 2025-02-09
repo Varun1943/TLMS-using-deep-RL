@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2024-12-24 20:26:46.413359 by osmWebWizard.py v1_21_0+0000-d7b3b481c43
+<configuration>
+    <net-file value="C:\Users\Varun\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\SUMO\2024-12-24-20-26-40\osm.net.xml.gz"/>
+    <output-trip-file value="C:\Users\Varun\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\SUMO\2024-12-24-20-26-40\osm.passenger.trips.xml"/>
+    <route-file value="C:\Users\Varun\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\SUMO\2024-12-24-20-26-40\osm.passenger.rou.xml"/>
+    <prefix value="veh"/>
+    <trip-attributes value="departLane=&quot;best&quot;"/>
+    <fringe-start-attributes value="departSpeed=&quot;max&quot;"/>
+    <vehicle-class value="passenger"/>
+    <lanes value="True"/>
+    <fringe-factor value="5"/>
+    <allow-fringe.min-length value="1000.0"/>
+    <via-edge-types value="highway.motorway,highway.motorway_link,highway.trunk_link,highway.primary_link,highway.secondary_link,highway.tertiary_link"/>
+    <min-distance value="300.0"/>
+    <min-distance.fringe value="10.0"/>
+    <remove-loops value="True"/>
+    <validate value="True"/>
+    <insertion-density value="12.0"/>
+</configuration>
+-->
+
+<!-- generated on 2024-12-24 20:26:46 by Eclipse SUMO duarouter Version 1.21.0
+<duarouterConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="C:\Users\Varun\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\SUMO\2024-12-24-20-26-40\osm.net.xml.gz"/>
+        <route-files value="C:\Users\Varun\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\SUMO\2024-12-24-20-26-40\osm.passenger.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="C:\Users\Varun\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\SUMO\2024-12-24-20-26-40\osm.passenger.trips.xml.tmp"/>
+        <alternatives-output value="NUL"/>
+        <write-trips value="true"/>
+    </output>
+
+    <processing>
+        <remove-loops value="true"/>
+    </processing>
+
+    <time>
+        <begin value="0.0"/>
+        <end value="3600.0"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</duarouterConfiguration>
+-->
+
+
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <vType id="emergency" vClass="emergency" accel="3.5" decel="6.0" sigma="0.2" maxSpeed="40.0" length="5.0" lcStrategic="0.5" lcCooperative="1.0" lcSpeedGain="1.5" lcKeepRight="0.1" color="red"/>
+    <trip id="ambulance0" type="emergency" depart="0.00" departLane="best" from="280676773#2" to="280472263#0"  color="red"/>
+    <trip id="ambulance1" type="emergency" depart="79.54" departLane="best" from="280680775#0" to="280680638#5"  color="red"/>
+    <trip id="ambulance2" type="emergency" depart="159.08" departLane="best" from="-874502248#5" to="-280472285#0"  color="red"/>
+    <trip id="ambulance3" type="emergency" depart="238.61" departLane="best" departSpeed="max"  from="-280472263#1" to="-280680643#0" color="red"/>
+    <trip id="ambulance4" type="emergency" depart="318.15" departLane="best" from="-280680648#4" to="280676634#2" color="red"/>
+    <trip id="ambulance5" type="emergency" depart="397.69" departLane="best" from="-280680898#0" to="-280676716#1"  color="red"/>
+    <trip id="ambulance6" type="emergency" depart="477.23" departLane="best" from="-280676587" to="-280676604#1" color="red"/>
+    <trip id="ambulance7" type="emergency" depart="556.76" departLane="best" departSpeed="max" from="280676558#3" to="-874502242" color="red"/>
+    <trip id="ambulance8" type="emergency" depart="636.30" departLane="best" from="-280680916#3" to="280676661#9" color="red"/>
+    <trip id="ambulance9" type="emergency" depart="715.84" departLane="best" from="280680671#0" to="241720911#19" color="red"/>
+    <trip id="ambulance10" type="emergency" depart="795.38" departLane="best" from="-280676563#14" to="-280680690" color="red"/>
+    <trip id="ambulance11" type="emergency" depart="874.91" departLane="best" from="280676757#3" to="-301350260" color="red"/>
+    <trip id="ambulance12" type="emergency" depart="954.45" departLane="best" from="-280680787" to="135955892#9" color="red"/>
+    <trip id="ambulance13" type="emergency" depart="1033.99" departLane="best" from="-874993006#0" to="280676728#1" color="red"/>
+    <trip id="ambulance14" type="emergency" depart="1113.53" departLane="best" from="-280680671#1" to="-280472285#2" color="red"/>
+    <trip id="ambulance15" type="emergency" depart="1193.07" departLane="best" from="-280680647#3" to="449394146" color="red"/>
+    <trip id="ambulance16" type="emergency" depart="1272.60" departLane="best" from="280680637#3" to="-873347097#1" color="red"/>
+    <trip id="ambulance17" type="emergency" depart="1352.14" departLane="best" from="280676660#2" to="280680886#0" color="red"/>
+    <trip id="ambulance18" type="emergency" depart="1431.68" departLane="best" from="280680868#0" to="-874507703" color="red"/>
+    <trip id="ambulance19" type="emergency" depart="1511.22" departLane="best" from="-280676660#11" to="-991891011" color="red"/>
+    <trip id="ambulance20" type="emergency" depart="1590.75" departLane="best" from="-280680857#1" to="-280676552#8" color="red"/>
+    <trip id="ambulance21" type="emergency" depart="1670.29" departLane="best" from="-280676558#6" to="280680795#1" color="red"/>
+    <trip id="ambulance22" type="emergency" depart="1749.83" departLane="best" from="241720911#0" to="280676558#5" color="red"/>
+    <trip id="ambulance23" type="emergency" depart="1829.37" departLane="best" from="-874599898" to="280680647#4" color="red"/>
+    <trip id="ambulance24" type="emergency" depart="1908.91" departLane="best" departSpeed="max" from="-280676660#8" to="280680656" color="red"/>
+    <trip id="ambulance25" type="emergency" depart="1988.44" departLane="best" from="-280680682#0" to="-280680648#4" color="red"/>
+    <trip id="ambulance26" type="emergency" depart="2067.98" departLane="best" from="-280680647#6" to="-280676661#2" color="red"/>
+    <trip id="ambulance27" type="emergency" depart="2147.52" departLane="best" departSpeed="max" from="-874599898" to="135955892#3" color="red"/>
+    <trip id="ambulance28" type="emergency" depart="2227.06" departLane="best" from="-280680638#0" to="135955892#12" color="red"/>
+    <trip id="ambulance29" type="emergency" depart="2306.59" departLane="best" from="280676563#14" to="-280475188#3"  color="red"/>
+    <trip id="ambulance30" type="emergency" depart="2386.13" departLane="best" from="-873545067" to="-280676552#8" color="red"/>
+    <trip id="ambulance31" type="emergency" depart="2465.67" departLane="best" from="-280676563#7" to="280680682#1" color="red"/>
+    <trip id="ambulance32" type="emergency" depart="2545.21" departLane="best" from="-280676563#14" to="-280680637#5" color="red"/>
+    <trip id="ambulance33" type="emergency" depart="2624.74" departLane="best" from="-874502248#3" to="-280676621#1" color="red"/>
+    <trip id="ambulance34" type="emergency" depart="2704.28" departLane="best" from="-280676558#9" to="135955892#14" color="red"/>
+    <trip id="ambulance35" type="emergency" depart="2783.82" departLane="best" from="280676757#1" to="385697442#7" color="red"/>
+    <trip id="ambulance36" type="emergency" depart="2863.36" departLane="best" from="280676689" to="-280676661#13" color="red"/>
+    <trip id="ambulance37" type="emergency" depart="2942.90" departLane="best" departSpeed="max" from="280680837#2" to="376558270#1"  color="red"/>
+    <trip id="ambulance38" type="emergency" depart="3022.43" departLane="best" from="-280680877#4" to="376558250#0" color="red"/>
+    <trip id="ambulance39" type="emergency" depart="3101.97" departLane="best" from="241720911#6" to="-280680780" color="red"/>
+    <trip id="ambulance40" type="emergency" depart="3181.51" departLane="best" from="-280680868#1" to="280680923#0" color="red"/>
+</routes>
