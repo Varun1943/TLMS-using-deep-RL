@@ -1,6 +1,6 @@
 # TLMS-using-deep-RL
 hey all..!
-this repo is all about optimizing the traffic flow escpecially in the peek hours of the day..
+this repo is all about optimizing the traffic flow by ppo(an policy based method) escpecially in the peek hours of the day..
 main features:
 1) single agent based (upon using multiple instances in the scenario you can observe the green wave optimization).
 2) prioritizing the emergency vechiles.
