@@ -7,7 +7,7 @@ main features:
 3) Dynamic lane-shifiting and collision based rerouting protocols.
 
 DEMO :
-<img width="260" height="108" alt="ay41g0" src="https://github.com/user-attachments/assets/2210cfd0-3219-45f9-90b9-10df9b42136a" />
+<img width="256" height="256" alt="ay41g0" src="https://github.com/user-attachments/assets/2210cfd0-3219-45f9-90b9-10df9b42136a" />
 
 
 
