@@ -2,9 +2,9 @@
 hey all..!
 this repo is all about optimizing the traffic flow by ppo(an policy based method) escpecially in the peek hours of the day..
 main features:
-1) single agent based (upon using multiple instances in the scenario you can observe the green wave optimization).
+1) single agent based (upon using multiple instances , throughput imporves).
 2) prioritizing the emergency vechiles.
-3) Dynamic lane-shifiting and collision based rerouting protocols.
+3) 
 
 DEMO :
 ### PPO Agent (Left) vs Static Fixed-Time Traffic Signal (Right)
@@ -26,23 +26,164 @@ DEMO :
 | Total waiting time     |                      88,578.00 s |                   **76,169.08 s** |  **~14% ↓**   | 
 
 
+# RL-Based Adaptive Traffic Signal Controller
 
-here's how you can see it work on your system.
-1) Download sumo(traffic simulator).
-2) clone this repo.
-3) you'll find the scenario
-4) download vunarabalities :
-5) pytorch
-6) stable Baselines3(SB3[extra])
-7) open-ai's gym env
-8) traci(important api to interact with sumo env)
-9) torch torchvision torchaudio
-10) use cuda for better performance upon cpu
-11) **only for colab users**
-12) it uses cloud resources by default so u need to switch for the connecting to local runtime ..
-13) here's how u can
-14) open via chrome (less security)
-15) run the command(in the anaconda prompt): jupyter notebook ^--NotebookApp.allow_origin='https://colab.research.google.com' ^--port=8888 ^--NotebookApp.port_retries=0
-16)  upon observation u can see the token something looks like example(format) -http://localhost:8888/tree?token=ec441ae3d2798c9a4c209ff8ebd3a8326eaff2ecd7093abf
-17)  now your are ready to run the ipynb scripts
+A reinforcement learning–based traffic signal controller that dynamically adjusts signal phase durations according to real-time traffic conditions simulated in **SUMO**.
+
+## Problem
+
+Fixed-time traffic signals use predefined timings regardless of traffic demand. This can cause unnecessary vehicle waiting, long queues, and inefficient use of green phases.
+
+This project uses **PPO (Proximal Policy Optimization)** to learn a traffic-control policy that adapts signal timing based on the current state of an intersection.
+
+## Architecture
+
+```text
+SUMO Traffic Simulation
+        │
+      TraCI
+        │
+        ▼
+   MySumoEnv
+        │
+        ▼
+ Traffic State
+        │
+        ▼
+ Curiosity + Exploration
+        │
+        ▼
+      PPO Agent
+        │
+        ▼
+  Signal Phase Duration
+        │
+        ▼
+   SUMO Simulation
+        │
+        └────── feedback ──────►
+```
+
+## State
+
+The agent observes normalized:
+
+* Queue length
+* Waiting time
+* Throughput
+* Travel time
+* Current traffic-light phase
+
+## Action
+
+The PPO policy outputs values in `[-1, 1]`, which are scaled into signal phase durations between **10 and 60 seconds**.
+
+A yellow phase is inserted between green phases.
+
+## Reward
+
+The reward combines:
+
+* lower queue length
+* lower waiting time
+* higher throughput
+* lower travel time
+* emergency-vehicle handling
+
+An additional curiosity reward encourages exploration of novel/unfamiliar states.
+
+## RL Pipeline
+
+* **SUMO** — traffic simulation
+* **TraCI** — Python ↔ SUMO communication
+* **Gymnasium** — custom RL environment
+* **Stable-Baselines3** — PPO implementation
+* **PyTorch** — neural-network computation
+* **TensorBoard** — training monitoring
+
+## Training
+
+The current implementation trains a **single PPO agent on a SUMO intersection environment**.
+
+The learned policy is intended to be reusable: after training, instances of the same policy can independently control multiple intersections with compatible state/action spaces.
+
+The current design does **not** implement multi-agent coordination between intersections.
+
+
+
+## Project Structure
+
+The notebook contains:
+
+```text
+                    ┌──────────────────┐
+                    │   SUMO Simulator │
+                    │ Vehicles/Traffic │
+                    └────────┬─────────┘
+                             │
+                           TraCI
+                             │
+                             ▼
+                    ┌──────────────────┐
+                    │   MySumoEnv      │
+                    │  Gymnasium Env   │
+                    └────────┬─────────┘
+                             │
+                       Collect State
+                             │
+                             ▼
+          ┌────────────────────────────────────┐
+          │ State                              │
+          │ • Queue length                     │
+          │ • Waiting time                     │
+          │ • Throughput                       │
+          │ • Travel time                      │
+          │ • Current signal phase (one-hot)   │
+          └────────────────┬───────────────────┘
+                           │
+                           ▼
+                ┌─────────────────────┐
+                │ Exploration Layer   │
+                │ Dynamic Action Noise│
+                └──────────┬──────────┘
+                           │
+                           ▼
+                ┌─────────────────────┐
+                │    PPO MLP Policy   │
+                │     RL Agent        │
+                └──────────┬──────────┘
+                           │
+                  Continuous Action
+                       [-1, 1]
+                           │
+                           ▼
+                ┌─────────────────────┐
+                │ Action Processing   │
+                │ Scale → 10–60 sec   │
+                │ + Yellow Phase      │
+                │ + Emergency Check   │
+                └──────────┬──────────┘
+                           │
+                           ▼
+                    Traffic Signal
+                           │
+                           ▼
+                         SUMO
+                           │
+                    Simulation Step
+                           │
+                           ▼
+                    New Traffic State
+                           │
+                           ├──────────────► Reward
+                           │                  │
+                           │                  ▼
+                           │          Traffic Reward
+                           │          + Curiosity Reward
+                           │
+                           ▼                  │
+                    PPO Learning ◄────────────┘
+                           │
+                           └────── repeat
+```
 
