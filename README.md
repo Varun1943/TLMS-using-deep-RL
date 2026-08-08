@@ -4,7 +4,6 @@ this repo is all about optimizing the traffic flow by ppo(an policy based method
 main features:
 1) single agent based (upon using multiple instances , throughput imporves).
 2) prioritizing the emergency vechiles.
-3) 
 
 DEMO :
 ### PPO Agent (Left) vs Static Fixed-Time Traffic Signal (Right)
