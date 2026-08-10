@@ -20,7 +20,7 @@ DEMO :
 | Vehicle trips          |                            1,400 |                             1,400 |          Same |
 | Simulation horizon     |                          3,800 s |                           3,800 s |          Same |
 | Average trip time      |                         173.66 s |                      **152.43 s** | **12.224% ↓** |
-| Total trip time        |                     243,124.00 s |                  **213,404.52 s** | **12.224% ↓** |
+| Total trip time        |                     243,124.00 s |                  **213,404.52 s** | **11.34% ↓** |
 | Average waiting time   |                          63.27 s |                       **53.71 s** |  **~14% ↓**   |
 | Total waiting time     |                      88,578.00 s |                   **76,169.08 s** |  **~14% ↓**   | 
 
